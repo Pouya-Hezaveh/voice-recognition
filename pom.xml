@@ -1,13 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.hezavehir</groupId>
     <artifactId>voice-recognition</artifactId>
     <version>1</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
@@ -20,6 +21,17 @@
             <artifactId>javafx-fxml</artifactId>
             <version>13</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.st-h</groupId>
+            <artifactId>TarsosDSP</artifactId>
+            <version>2.4.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.wendykierp</groupId>
+            <artifactId>JTransforms</artifactId>
+            <version>3.1</version>
+        </dependency>
+        <!-- Thanks for using https://jar-download.com -->
     </dependencies>
     <build>
         <plugins>
@@ -48,4 +60,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
