@@ -19,7 +19,7 @@ import be.tarsos.dsp.io.jvm.AudioDispatcherFactory;
 public class MFCCTest {
     public static void main(String[] args) throws Exception {
         final AudioDispatcher dispatcher = AudioDispatcherFactory.fromFile(
-                new File("/home/richard/Research/ScratchVR/hi.wav"),
+                new File("./aud/Persian/numbers/1(yek).wav"),
                 (int)(0.2*48000),
                 0);
 
