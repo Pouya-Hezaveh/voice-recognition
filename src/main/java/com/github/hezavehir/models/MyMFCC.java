@@ -1,4 +1,4 @@
-package com.github.hezavehir;
+package com.github.hezavehir.models;
 
 import org.jtransforms.dct.FloatDCT_1D;
 import org.jtransforms.fft.FloatFFT_1D;
@@ -18,7 +18,7 @@ public class MyMFCC {
     private float[] freqs = null;
 
     public MyMFCC() {
-
+        
     }
 
     private void initFilterBanks(float frequency, float nFFT) {

@@ -2,6 +2,8 @@ package com.github.hezavehir;
 
 import java.io.IOException;
 
+import com.github.hezavehir.models.Test;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -32,7 +34,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        Models.test();
+        Test.test();
         launch();
     }
 

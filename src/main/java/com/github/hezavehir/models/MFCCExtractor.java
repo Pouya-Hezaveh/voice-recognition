@@ -1,9 +1,14 @@
-package com.github.hezavehir;
+package com.github.hezavehir.models;
 
 import java.io.File;
 
+import be.tarsos.dsp.AudioDispatcher;
+import be.tarsos.dsp.AudioEvent;
+import be.tarsos.dsp.AudioProcessor;
+import be.tarsos.dsp.io.jvm.AudioDispatcherFactory;
+
 /*
- * author: @lichard49
+ * This is a modified version of a code from: @lichard49
  * repository: lichard49/MFCCTest.java
  * url: https://gist.github.com/lichard49/69ab2a2ddd3c11394974c404ca102a55
  *
@@ -11,17 +16,12 @@ import java.io.File;
  * the owner of the code when I am writing this repository.
 */
 
-import be.tarsos.dsp.AudioDispatcher;
-import be.tarsos.dsp.AudioEvent;
-import be.tarsos.dsp.AudioProcessor;
-import be.tarsos.dsp.io.jvm.AudioDispatcherFactory;
-
-public class MFCCTest {
+public class MFCCExtractor {
     public static void main(String[] args) throws Exception {
         final AudioDispatcher dispatcher = AudioDispatcherFactory.fromFile(
                 new File("./aud/Persian/numbers/1(yek).wav"),
-                (int)(0.2*48000),
-                0);
+                2400,
+                1200);
 
         dispatcher.addAudioProcessor(new AudioProcessor() {
 
@@ -37,7 +37,6 @@ public class MFCCTest {
                         audioEvent.getSampleRate(),
                         13);
                 printArray("mfccs", mfccs);
-
                 return true;
             }
         });

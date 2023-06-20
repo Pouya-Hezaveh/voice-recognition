@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 public class PrimaryController {
 
     //todo : Setting up AreaChart
-    //  AreaChart mfccChart = new AreaChart<>(null, null);
+    //  AreaChart mfccChart = new AreaChart<>(null, null)
 
     @FXML
     private void switchToSecondary() throws IOException {
