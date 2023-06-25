@@ -23,12 +23,16 @@ public class MFCCExtractor {
     int bufferOverlap = 1024;
     int samplesPerFrame = 2048;
     int sampleRate = 44100;
-    int amountOfCepstrumCoef = 1;
+    int amountOfCepstrumCoef = 13;
     int amountOfMelFilters = 20;
-    int lowerFilterFreq = 150;
-    int upperFilterFreq = 20000;
+    int lowerFilterFreq = 0;
+    int upperFilterFreq = 1000;
 
     public MFCCExtractor(File file) throws UnsupportedAudioFileException, IOException {
+        extractMFCC(file);
+    }
+
+    void extractMFCC(File file) throws UnsupportedAudioFileException, IOException {
         List<Float> timeList = new ArrayList<>(300);
         List<float[]> mfccList = new ArrayList<>(300);
         AudioDispatcher dispatcher = AudioDispatcherFactory.fromFile(file, audioBufferSize, bufferOverlap);
@@ -71,4 +75,5 @@ public class MFCCExtractor {
     public float[][] getMFCCMatrix() {
         return this.mfccMatrix;
     }
+    
 }
