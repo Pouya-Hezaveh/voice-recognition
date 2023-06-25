@@ -12,41 +12,47 @@ import be.tarsos.dsp.AudioEvent;
 import be.tarsos.dsp.AudioProcessor;
 import be.tarsos.dsp.io.jvm.AudioDispatcherFactory;
 import be.tarsos.dsp.mfcc.MFCC;
-import javafx.util.Pair;
+
+// @author: Pouya Hezaveh
 
 public class MFCCExtractor {
+    private int numberOfEvents = 0;
+    private float[][] mfccMatrix;
+    private float[] timeVector;
+    int audioBufferSize = 2048;
+    int bufferOverlap = 1024;
+    int samplesPerFrame = 2048;
+    int sampleRate = 44100;
+    int amountOfCepstrumCoef = 1;
+    int amountOfMelFilters = 20;
+    int lowerFilterFreq = 150;
+    int upperFilterFreq = 20000;
 
-    public static void main(String[] args) throws UnsupportedAudioFileException, IOException {
-        File file = new File("/home/pouya/Desktop/voice-recognition/aud/Persian/numbers/2(do).wav");
-        // AudioDispatcher dispatcher = AudioDispatcherFactory.fromFile(file, 2048,
-        // 1024);
-        // int numCoefficients = 13;
-
-        // MFCC mfcc = new MFCC(2048, 44100, numCoefficients, 20, 300, 22000);
-        // dispatcher.addAudioProcessor(mfcc);
-        // dispatcher.run();
-        // float[] mfccValues = mfcc.getMFCC();
-        // System.out.println(Arrays.toString(mfccValues));
-
-        List<Pair<Float, float[]>> mfccList = new ArrayList<>(300);
-        AudioDispatcher dispatcher = AudioDispatcherFactory.fromFile(file, 2048, 512);
-        MFCC mfcc = new MFCC(2048, 44100, 13, 20, 300, 22000);
+    public MFCCExtractor(File file) throws UnsupportedAudioFileException, IOException {
+        List<Float> timeList = new ArrayList<>(300);
+        List<float[]> mfccList = new ArrayList<>(300);
+        AudioDispatcher dispatcher = AudioDispatcherFactory.fromFile(file, audioBufferSize, bufferOverlap);
+        MFCC mfcc = new MFCC(samplesPerFrame, sampleRate, amountOfCepstrumCoef, amountOfMelFilters, lowerFilterFreq,
+                upperFilterFreq);
         dispatcher.addAudioProcessor(mfcc);
+
         dispatcher.addAudioProcessor(new AudioProcessor() {
 
             @Override
             public void processingFinished() {
-                for (int i = 0; i < mfccList.size(); i++) {
-                    System.out.print("\n$$$" + mfccList.get(i).getKey() + ": ");
-                    for (int j = 0; j < mfccList.get(i).getValue().length; j++) {
-                        System.out.print(mfccList.get(i).getValue()[j] + " ");
-                    }
+                timeVector = new float[numberOfEvents];
+                mfccMatrix = new float[numberOfEvents][amountOfCepstrumCoef];
+                for (int i = 0; i < numberOfEvents; i++) {
+                    timeVector[i] = timeList.get(i);
+                    mfccMatrix[i] = mfccList.get(i);
                 }
             }
 
             @Override
             public boolean process(AudioEvent audioEvent) {
-                mfccList.add(new Pair(audioEvent.getTimeStamp(), mfcc.getMFCC()));
+                timeList.add((float) audioEvent.getTimeStamp());
+                mfccList.add(mfcc.getMFCC());
+                numberOfEvents++;
                 return true;
             }
         });
@@ -54,4 +60,15 @@ public class MFCCExtractor {
         dispatcher.run();
     }
 
+    public int getLength() {
+        return numberOfEvents;
+    }
+
+    public float[] getTimeVector() {
+        return timeVector;
+    }
+
+    public float[][] getMFCCMatrix() {
+        return this.mfccMatrix;
+    }
 }
