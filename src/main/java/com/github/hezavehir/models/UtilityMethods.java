@@ -44,9 +44,34 @@ public class UtilityMethods {
             for (int i = 0; i < secondArray.length; i++) {
                 secondArray[i] = secondMFCC[i][k];
             }
+            // for (int i = 0; i < firstArray.length-1; i++) {
+            // firstArray[i] =
+            // (firstMFCC[i+1][k]-firstMFCC[i][k])/(firstExt.getTimeVector()[i+1]-firstExt.getTimeVector()[i]);
+            // }
+            // for (int i = 0; i < secondArray.length-1; i++) {
+            // secondArray[i] =
+            // (secondMFCC[i+1][k]-secondMFCC[i][k])/(secondExt.getTimeVector()[i+1]-secondExt.getTimeVector()[i]);
+            // }
+
+            // fitArray(firstArray);
+            // fitArray(secondArray);
+
             result += Algorithms.calculateDTW(firstArray, secondArray);
         }
 
         return result;
     }
+    
+    static void fitArray(float[] arr) {
+        // float average = 0;
+        // for (int i = 0; i < arr.length; i++) {
+        //         average += arr[i];
+        // }
+        // average/=arr.length;
+
+        // for (int i = 0; i < arr.length; i++) {
+        //     arr[i] /= average;
+        // }
+    }
+
 }

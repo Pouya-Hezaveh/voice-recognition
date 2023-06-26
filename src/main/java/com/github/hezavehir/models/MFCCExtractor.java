@@ -23,9 +23,9 @@ public class MFCCExtractor {
     int bufferOverlap = 1024;
     int samplesPerFrame = 2048;
     int sampleRate = 44100;
-    int amountOfCepstrumCoef = 13;
+    int amountOfCepstrumCoef = 1;
     int amountOfMelFilters = 20;
-    int lowerFilterFreq = 0;
+    int lowerFilterFreq = 100;
     int upperFilterFreq = 1000;
 
     public MFCCExtractor(File file) throws UnsupportedAudioFileException, IOException {
