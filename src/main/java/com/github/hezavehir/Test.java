@@ -54,7 +54,7 @@ class JavaSoundRecorder {
      * Defines an audio format
      */
     AudioFormat getAudioFormat() {
-        float sampleRate = 16000;
+        float sampleRate = 44100;
         int sampleSizeInBits = 8;
         int channels = 2;
         boolean signed = true;

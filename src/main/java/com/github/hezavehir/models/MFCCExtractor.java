@@ -24,9 +24,10 @@ public class MFCCExtractor {
     int samplesPerFrame = 2048;
     int sampleRate = 44100;
     int amountOfCepstrumCoef = 1;
-    int amountOfMelFilters = 20;
-    int lowerFilterFreq = 100;
-    int upperFilterFreq = 1000;
+    int amountOfMelFilters = 40;
+    // this filters the frequency in range of human voice.
+    int lowerFilterFreq = 50;
+    int upperFilterFreq = 300;
 
     public MFCCExtractor(File file) throws UnsupportedAudioFileException, IOException {
         extractMFCC(file);

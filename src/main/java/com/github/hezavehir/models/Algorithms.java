@@ -21,7 +21,7 @@ public class Algorithms {
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= m; j++) {
                 // avery unit gap has more important than the previous one so,
-                // to make the gap exponential: the gap = (arr1 - arr2)^2
+                // to make the gap impacts exponential: the gap = (arr1 - arr2)^2
                 float gap = firstArray[i - 1] - secondArray[j - 1];
                 gap = gap * gap;
                 dp[i][j] = gap + Math.min(dp[i - 1][j - 1], Math.min(dp[i - 1][j], dp[i][j - 1]));
