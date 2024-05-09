@@ -1,4 +1,4 @@
 # Voice-Recognition
-Voice Recognition Project in Java language using (MFCC) and (DTW) Techniques.
+### Voice Recognition Project in Java language using (MFCC) and (DTW) Techniques.
 
-*** NOTE: This repository is under development and not yet complete. ***
+NOTE: It was done according to the committed scientific article, but it seems that this method is not accurate enough for applications, the best method for sound recognition is neural networks.
