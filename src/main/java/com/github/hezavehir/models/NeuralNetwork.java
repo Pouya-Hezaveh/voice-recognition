@@ -1,3 +1,7 @@
+// =====================================
+// This file is not used in the project.
+// =====================================
+
 package com.github.hezavehir.models;
 
 import java.util.ArrayList;
